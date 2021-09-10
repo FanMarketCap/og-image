@@ -69,12 +69,13 @@ function getCss(change_24h: any) {
       font-weight: 700;
       font-style: normal;
       line-height: 1.2;
-      max-width: 50%;
+      margin-right: 60px;
     }
 
     .content {
       font-family: "Poppins", sans-serif;
       display: flex;
+      flex-shrink: 0;
     }
 
     .content .item {
@@ -110,6 +111,7 @@ function getCss(change_24h: any) {
       flex-direction: row;
       width: 100%;
       justify-content: space-between;
+      align-items: center;
     }
 
     .container {
@@ -124,7 +126,6 @@ function getCss(change_24h: any) {
     .price-container {
       display: flex;
       align-items: center;
-      margin-bottom: 32px;
     }
 
     .price-container p {
@@ -132,11 +133,11 @@ function getCss(change_24h: any) {
     }
 
     .second-line p {
-      font-size: 54px;
+      font-size: 66px;
     }
 
     .second-line h3 {
-      font-size: 24px;
+      font-size: 44px;
     }
 
     .icons {
@@ -151,7 +152,7 @@ function getCss(change_24h: any) {
     }
 
     .fmc-logo {
-      max-height: 60px;
+      max-height: 90px;
       margin-right: auto;
     }
 
@@ -254,24 +255,21 @@ export function getHtml(parsedReq: ParsedRequest) {
               ${emojify(md ? marked(text) : sanitizeHtml(text))}
             </div>
           </div>
-        </div>
-
-        <div>
           <div class="content">
-            <div class="item">
+            <div>
               <h3>Price</h3>
               <div class="price-container">
                 <p>${emojify(md ? marked(price) : sanitizeHtml(price))}</p>
-
                 <div class="icons">
                   ${getIcon(change_24h)}
                   <div class="percent">${formatPercent(change_24h)}</div>
                 </div>
-
-
               </div>
             </div>
           </div>
+        </div>
+
+        <div>
           <div class="content second-line">
             <div class="item">
               <h3>Marketcap</h3>
