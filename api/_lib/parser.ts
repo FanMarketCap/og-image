@@ -5,11 +5,8 @@ import { ParsedRequest, Theme } from './types';
 export function parseRequest(req: IncomingMessage) {
     console.log('HTTP ' + req.url);
     const { pathname, query } = parse(req.url || '/', true);
-    const { fontSize, price, l24, h24, images, widths, heights, theme, md } = (query || {});
+    const { price, l24, h24, images, widths, heights, theme, md, marketcap, change_24h } = (query || {});
 
-    if (Array.isArray(fontSize)) {
-        throw new Error('Expected a single fontSize');
-    }
     if (Array.isArray(theme)) {
         throw new Error('Expected a single theme');
     }
@@ -31,10 +28,11 @@ export function parseRequest(req: IncomingMessage) {
         text: decodeURIComponent(text),
         theme: theme === 'dark' ? 'dark' : 'light',
         md: md === '1' || md === 'true',
-        fontSize: fontSize || '96px',
         price: price || '-',
         l24: l24 || '-',
         h24: h24 || '-',
+        marketcap: marketcap || '-',
+        change_24h: change_24h || '-',
         images: getArray(images),
         widths: getArray(widths),
         heights: getArray(heights),

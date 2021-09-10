@@ -6,10 +6,11 @@ export interface ParsedRequest {
     text: string;
     theme: Theme;
     md: boolean;
-    fontSize: string;
     price: any;
+    marketcap: any;
     h24: any;
     l24: any;
+    change_24h: any;
     images: string[];
     widths: string[];
     heights: string[];
