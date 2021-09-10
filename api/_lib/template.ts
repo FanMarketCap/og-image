@@ -56,6 +56,7 @@ function getCss(change_24h: any) {
 
     .logo-wrapper {
       display: flex;
+      align-items: center;
     }
 
     .logo {
