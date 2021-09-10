@@ -1,4 +1,4 @@
-import { ParsedRequest, Theme, FileType } from "../api/_lib/types";
+import { ParsedRequest, FileType } from "../api/_lib/types";
 const { H, R, copee } = window as any;
 let timeout = -1;
 
@@ -126,11 +126,6 @@ const Toast = ({ show, message }: ToastProps) => {
     )
   );
 };
-
-const themeOptions: DropdownOption[] = [
-  { text: "Light", value: "light" },
-  { text: "Dark", value: "dark" },
-];
 
 const fileTypeOptions: DropdownOption[] = [
   { text: "PNG", value: "png" },
@@ -318,7 +313,6 @@ const App = (_: any, state: AppState, setState: SetState) => {
   };
   const {
     fileType = "png",
-    theme = "light",
     md = true,
     text = "**Hello** World",
     price = "-",
@@ -338,7 +332,6 @@ const App = (_: any, state: AppState, setState: SetState) => {
   const mdValue = md ? "1" : "0";
   const url = new URL(window.location.origin);
   url.pathname = `${encodeURIComponent(text)}.${fileType}`;
-  url.searchParams.append("theme", theme);
   url.searchParams.append("md", mdValue);
   url.searchParams.append("h24", h24);
   url.searchParams.append("l24", l24);
@@ -363,19 +356,6 @@ const App = (_: any, state: AppState, setState: SetState) => {
       { className: "pull-left" },
       H(
         "div",
-        H(Field, {
-          label: "Theme",
-          input: H(Dropdown, {
-            options: themeOptions,
-            value: theme,
-            onchange: (val: Theme) => {
-              const options = imageOptions;
-              let clone = [...images];
-              clone[0] = options[selectedImageIndex].value;
-              setLoadingState({ theme: val, images: clone });
-            },
-          }),
-        }),
         H(Field, {
           label: "File Type",
           input: H(Dropdown, {
@@ -429,6 +409,26 @@ const App = (_: any, state: AppState, setState: SetState) => {
             oninput: (val: string) => {
               console.log("oninput " + val);
               setLoadingState({ l24: val, overrideUrl: url });
+            },
+          }),
+        }),
+        H(Field, {
+          label: "Change 24",
+          input: H(TextInput, {
+            value: change_24h,
+            oninput: (val: string) => {
+              console.log("oninput " + val);
+              setLoadingState({ change_24h: val, overrideUrl: url });
+            },
+          }),
+        }),
+        H(Field, {
+          label: "Market Cap",
+          input: H(TextInput, {
+            value: marketcap,
+            oninput: (val: string) => {
+              console.log("oninput " + val);
+              setLoadingState({ marketcap: val, overrideUrl: url });
             },
           }),
         }),

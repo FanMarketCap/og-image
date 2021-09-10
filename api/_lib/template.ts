@@ -22,14 +22,14 @@ function getCss(change_24h: any) {
         font-family: 'Poppins';
         font-style:  normal;
         font-weight: normal;
-        src: url(data:font/woff2;charset=utf-8;base64,${rglr}) format('woff2');
+        src: url(data:font/woff2;charset=utf-8;base64,${rglr});
     }
 
     @font-face {
         font-family: 'Poppins';
         font-style:  normal;
         font-weight: bold;
-        src: url(data:font/woff2;charset=utf-8;base64,${bold}) format('woff2');
+        src: url(data:font/woff2;charset=utf-8;base64,${bold});
     }
 
     body {
@@ -235,7 +235,7 @@ export function getHtml(parsedReq: ParsedRequest) {
               )
               .join("")}
               <div class="heading">
-              ${emojify(md ? marked(text) : sanitizeHtml(text))}
+                ${emojify(md ? marked(text) : sanitizeHtml(text))}
               </div>
           </div>
         </div>
