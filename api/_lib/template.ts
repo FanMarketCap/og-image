@@ -265,7 +265,7 @@ export function getHtml(parsedReq: ParsedRequest) {
             </div>
             <div class="item highest">
               <h3>Highest 24h</h3>
-              <p>$${emojify(md ? marked(h24) : sanitizeHtml(h24))}</p>
+              <p>${emojify(md ? marked(h24) : sanitizeHtml(h24))}</p>
             </div>
             <div class="item lowest">
               <h3>Lowest 24h</h3>
