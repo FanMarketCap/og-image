@@ -228,15 +228,17 @@ export function getHtml(parsedReq: ParsedRequest) {
       <div class="container">
         <div class="header">
           <div class="logo-wrapper">
-            ${images
-              .map(
-                (img, i) =>
-                  getPlusSign(i) + getImage(img, widths[i], heights[i])
-              )
-              .join("")}
-              <div class="heading">
-                ${emojify(md ? marked(text) : sanitizeHtml(text))}
-              </div>
+            <div>
+              ${images
+                .map(
+                  (img, i) =>
+                    getPlusSign(i) + getImage(img, widths[i], heights[i])
+                )
+                .join("")}
+            </div>
+            <div class="heading">
+              ${emojify(md ? marked(text) : sanitizeHtml(text))}
+            </div>
           </div>
         </div>
 
