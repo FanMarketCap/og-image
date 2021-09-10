@@ -150,14 +150,13 @@ function getCss(change_24h: any) {
       color: ${isFlat ? "#1a202c" : '#FFF'};
     }
 
-    .up,
-    .down {
-      display: none;
-    }
-
     .fmc-logo {
       max-height: 60px;
       margin-right: auto;
+    }
+
+    .up, .down {
+      margin-right: 4px;
     }
     `;
 }
@@ -169,8 +168,8 @@ function getIcon(change_24h: any) {
   if (isSuccess) {
     return `<svg
       xmlns="http://www.w3.org/2000/svg"
-      width="28"
-      height="28"
+      width="32"
+      height="32"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -189,8 +188,8 @@ function getIcon(change_24h: any) {
 
   return `<svg
       xmlns="http://www.w3.org/2000/svg"
-      width="28"
-      height="28"
+      width="32"
+      height="32"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -202,6 +201,20 @@ function getIcon(change_24h: any) {
       <polyline points="6 9 12 15 18 9"></polyline>
     </svg>
   `;
+}
+
+function formatPercent(value: any) {
+  if (isNaN(value)) {
+    return "-";
+  }
+
+  const formatter = new Intl.NumberFormat('en-US', {
+    style: 'percent',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+
+  return formatter.format(value < 0 ? (value * -1) / 100 : value / 100);
 }
 
 export function getHtml(parsedReq: ParsedRequest) {
@@ -252,7 +265,7 @@ export function getHtml(parsedReq: ParsedRequest) {
 
                 <div class="icons">
                   ${getIcon(change_24h)}
-                  <div class="percent">${change_24h}%</div>
+                  <div class="percent">${formatPercent(change_24h)}</div>
                 </div>
 
 
