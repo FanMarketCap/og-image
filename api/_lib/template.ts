@@ -144,7 +144,7 @@ function getCss(change_24h: any) {
       margin-left: 1rem;
       display: flex;
       align-items: center;
-      font-size: 36px;
+      font-size: 56px;
       background: ${isSuccess ? "#48bb78" : isFlat ? 'transparent' : '#f56565'};
       border-radius: 16px;
       padding: 0 24px;
