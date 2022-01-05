@@ -430,7 +430,7 @@ function getUserContent(parsedReq: ParsedRequest) {
     `;
     }
 
-    return `<p>${username} isn't created any price alerts yet. But join and follow him!</p>`;
+    return ``;
   }
 
   return ``;
