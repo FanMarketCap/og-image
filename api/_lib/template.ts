@@ -394,7 +394,7 @@ function getTokenContent(parsedReq: ParsedRequest) {
 }
 
 function getUserContent(parsedReq: ParsedRequest) {
-  const { alerts, username } = parsedReq;
+  const { alerts } = parsedReq;
 
   if (alerts) {
     const alertsArray = JSON.parse(decodeURIComponent(alerts));
